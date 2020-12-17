@@ -22,3 +22,9 @@ quiche:
     git_repo: https://github.com/cloudflare/quiche
     paths:
         - .
+ngx_brotli:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/eustas/ngx_brotli
+    paths:
+        - .
