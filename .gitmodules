@@ -1,3 +1,9 @@
 [submodule "nginx"]
 	path = nginx
 	url = https://github.com/nginx/nginx
+[submodule "ngx_brotli"]
+	path = ngx_brotli
+	url = https://github.com/eustas/ngx_brotli.git
+[submodule "zlib"]
+	path = zlib
+	url = https://github.com/cloudflare/zlib.git
