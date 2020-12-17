@@ -4,3 +4,15 @@ tengine:
     git_repo: https://github.com/alibaba/tengine
     paths:
         - modules
+nginx-sticky-module-ng:
+    type: modules
+    mode: git_repo
+    git_repo: https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng
+    paths:
+        - .
+headers-more-nginx-module:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/openresty/headers-more-nginx-module
+    paths:
+        - .
