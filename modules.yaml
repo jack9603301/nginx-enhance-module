@@ -1,0 +1,6 @@
+tengine:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/alibaba/tengine
+    paths:
+        - modules
