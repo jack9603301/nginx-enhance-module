@@ -28,3 +28,45 @@ ngx_brotli:
     git_repo: https://github.com/eustas/ngx_brotli
     paths:
         - .
+ngx_devel_kit:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/simplresty/ngx_devel_kit
+    paths:
+        - .
+naxsi:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/nbs-system/naxsi
+    paths:
+        - .
+nginx-dav-ext-module:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/arut/nginx-dav-ext-module
+    paths:
+        - .
+nginx-module-vts:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/vozlt/nginx-module-vts
+    paths:
+        - .
+nginx-module-vts:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/vozlt/nginx-module-vts
+    paths:
+        - .
+LuaJIT:
+    type: depends
+    mode: wget
+    wget: http://luajit.org/download/LuaJIT-2.0.5.tar.gz
+    filename: LuaJIT-2.0.5.tar.gz
+    dest: ./
+pcre:
+    type: depends
+    mode: wget
+    wget: https://ftp.pcre.org/pub/pcre/pcre-8.32.tar.gz
+    filename: pcre-8.32.tar.gz
+    dest: ./

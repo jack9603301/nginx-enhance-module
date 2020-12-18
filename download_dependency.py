@@ -39,29 +39,62 @@ def processing(module,conf):
     print(f'I: {module} is the {type} type')
     print(f'I: {module} uses {mode} method to obtain')
     if mode == 'git_repo':
-        if 'mode' not in conf:
-            print(f'E: Module {module} is missing the download mode field, skip')
+        if 'git_repo' not in conf:
+            print(f'E: Module {module} is missing the download git_repo field, skip')
             return
         if 'paths' not in conf:
             print(f'E: Module {module} is missing the download paths field, skip')
             return
         repo = conf['git_repo']
         paths = conf['paths']
-        print(f'I: Module {module} performs cloning {pwd}/{temp_dir}/modules/{module}')
-        if os.system(f'git clone --recurse-submodules {repo} {pwd}/{temp_dir}/modules/{module}'):
+        print(f'I: Module {module} performs cloning {pwd}/{temp_dir}/{type}/{module}')
+        if os.system(f'git clone --recurse-submodules {repo} {pwd}/{temp_dir}/{type}/{module}'):
             print(f'E: Module {module} Execution command error, termination')
             sys.exit(1)
         else:
-            for path in paths:
-                full_src_path = f'{pwd}/{temp_dir}/modules/{module}/{path}/*'
-                full_dest_path = f'{pwd}/modules/{module}/'
+            if type == 'modules':
+                for path in paths:
+                    full_src_path = f'{pwd}/{temp_dir}/{type}/{module}/{path}/*'
+                    full_dest_path = f'{pwd}/{type}/{module}/'
+                    print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
+                    if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
+                        print(f'E: Module {module} Execution command error, termination')
+                        sys.exit(1)
+            else:
+                print(f'E: Modules {module} not support {type} type')
+                sys.exit(1)
+    elif mode == 'wget':
+        if 'wget' not in conf:
+            print(f'E: Module {module} is missing the download wget field, skip')
+            return
+        if 'filename' not in conf:
+            print(f'E: Module {module} is missing the download filename field, skip')
+            return
+        if 'dest' not in conf:
+            print(f'E: Module {module} is missing the download dest field, skip')
+            return
+        download_url = conf['wget']
+        filename = conf['filename']
+        desk_file = conf['dest']
+        print(f'I: Module {module} performs download {pwd}/{temp_dir}/{type}/{filename}')
+        if os.system(f'wget {download_url} -P {pwd}/{temp_dir}/{type}'):
+            print(f'E: Module {module} Execution command error, termination')
+            sys.exit(1)
+        else:
+            print(f'Module {module} Start unpacking Tar.gz')
+            if os.system(f'mkdir -p {pwd}/{temp_dir}/{type}/{module} && tar xvf {pwd}/{temp_dir}/{type}/{filename} -C {pwd}/{temp_dir}/{type}/{module}'):
+                print(f'E: Module {module} Execution command error, termination')
+                sys.exit(1)
+            if type == 'depends':
+                full_src_path = f'{pwd}/{temp_dir}/{type}/{module}'
+                full_dest_path = f'{pwd}/{desk_file}/depend/{module}'
                 print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
                 if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
-                    print(f'E: Module {module} Execution command error, termination')
-                    sys.exit(1)
-                
-        
-
+                        print(f'E: Module {module} Execution command error, termination')
+                        sys.exit(1)
+            else:
+                print(f'E: Modules {module} not support {type} type')
+                sys.exit(1)
 if __name__ == '__main__':
     print('I: Check the temporary folder')
     if not os.path.exists(f'{pwd}/{temp_dir}'):
@@ -73,6 +106,11 @@ if __name__ == '__main__':
             print('I: Temporary modules folder does not exist, create now')
             os.mkdir(f'{pwd}/{temp_dir}/modules')
             print('I: Temporary modules folder does not exist, creation' + f' {pwd}/{temp_dir}/modules' + ' is complete')
+        print('I: Check the temporary depend folder')
+        if not os.path.exists(f'{pwd}/{temp_dir}/depend'):
+            print('I: Temporary depend folder does not exist, create now')
+            os.mkdir(f'{pwd}/{temp_dir}/depend')
+            print('I: Temporary depend folder does not exist, creation' + f' {pwd}/{temp_dir}/depend' + ' is complete')
         
     yaml_data = read_conf(f'{pwd}/{yaml_file}')
     if yaml_data:

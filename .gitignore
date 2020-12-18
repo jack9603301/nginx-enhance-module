@@ -1,2 +1,5 @@
 tmp
 modules
+depends/*
+!depends/nginx
+!depends/zlib
