@@ -58,6 +58,12 @@ nginx-module-vts:
     git_repo: https://github.com/vozlt/nginx-module-vts
     paths:
         - .
+nginx_upstream_check_module:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/yaoweibin/nginx_upstream_check_module
+    paths:
+        - .
 LuaJIT:
     type: depends
     mode: wget

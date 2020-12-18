@@ -87,7 +87,7 @@ def processing(module,conf):
                 sys.exit(1)
             if type == 'depends':
                 full_src_path = f'{pwd}/{temp_dir}/{type}/{module}'
-                full_dest_path = f'{pwd}/{desk_file}/depend/{module}'
+                full_dest_path = f'{pwd}/{desk_file}/{type}/{module}'
                 print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
                 if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
                         print(f'E: Module {module} Execution command error, termination')
