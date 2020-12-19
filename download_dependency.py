@@ -12,8 +12,6 @@ args = parser.parse_args()
 if args.module != None:
     enable_modules = args.module
 
-print(args.module)
-
 pwd = os.getcwd()
 
 yaml_file = 'modules.yaml'
