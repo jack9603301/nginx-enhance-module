@@ -51,13 +51,12 @@ def processing(module,conf):
             sys.exit(1)
         else:
             if type == 'modules':
-                for path in paths:
-                    full_src_path = f'{pwd}/{temp_dir}/{type}/{module}/{path}/*'
-                    full_dest_path = f'{pwd}/{type}/{module}/'
-                    print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
-                    if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
-                        print(f'E: Module {module} Execution command error, termination')
-                        sys.exit(1)
+                full_src_path = f'{pwd}/{temp_dir}/{type}/{module}/*'
+                full_dest_path = f'{pwd}/{type}/{module}/'
+                print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
+                if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
+                    print(f'E: Module {module} Execution command error, termination')
+                    sys.exit(1)
             else:
                 print(f'E: Modules {module} not support {type} type')
                 sys.exit(1)

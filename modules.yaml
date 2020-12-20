@@ -1,369 +1,243 @@
-tengine:
-    type: modules
-    mode: git_repo
-    git_repo: https://github.com/alibaba/tengine
-    paths:
-        - modules
 nginx-sticky-module-ng:
     type: modules
     mode: git_repo
     git_repo: https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng
-    paths:
-        - .
 headers-more-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/headers-more-nginx-module
-    paths:
-        - .
 quiche:
     type: modules
     mode: git_repo
     git_repo: https://github.com/cloudflare/quiche
-    paths:
-        - .
 ngx_brotli:
     type: modules
     mode: git_repo
     git_repo: https://github.com/google/ngx_brotli
-    paths:
-        - .
 ngx_devel_kit:
     type: modules
     mode: git_repo
     git_repo: https://github.com/simplresty/ngx_devel_kit
-    paths:
-        - .
 naxsi:
     type: modules
     mode: git_repo
     git_repo: https://github.com/nbs-system/naxsi
-    paths:
-        - .
 nginx-dav-ext-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/arut/nginx-dav-ext-module
-    paths:
-        - .
 nginx-module-vts:
     type: modules
     mode: git_repo
     git_repo: https://github.com/vozlt/nginx-module-vts
-    paths:
-        - .
 nginx-module-vts:
     type: modules
     mode: git_repo
     git_repo: https://github.com/vozlt/nginx-module-vts
-    paths:
-        - .
 nginx_upstream_check_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/yaoweibin/nginx_upstream_check_module
-    paths:
-        - .
 nginx_accept_language_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/giom/nginx_accept_language_module
-    paths:
-        - .
 afcgi:
     type: modules
     mode: git_repo
     git_repo: https://github.com/rsms/afcgi
-    paths:
-        - .
 nginx_mod_akamai_g2o:
     type: modules
     mode: git_repo
     git_repo: https://github.com/kaltura/nginx_mod_akamai_g2o
-    paths:
-        - .
 array-var-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/array-var-nginx-module
-    paths:
-        - .
 nginx-audio-track-for-hls-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/flavioribeiro/nginx-audio-track-for-hls-module
-    paths:
-        - .
 nginx-http-auth-digest:
     type: modules
     mode: git_repo
     git_repo: https://github.com/atomx/nginx-http-auth-digest
-    paths:
-        - .
 ngx_http_auth_pam_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/sto/ngx_http_auth_pam_module
-    paths:
-        - .
 ngx_http_auth_request_module:
     type: modules
     mode: git_repo
     git_repo: http://mdounin.ru/hg/ngx_http_auth_request_module/
-    paths:
-        - .
 ngx_auto_lib:
     type: modules
     mode: git_repo
     git_repo: https://github.com/simplresty/ngx_auto_lib
-    paths:
-        - .
 ngx_aws_auth:
     type: modules
     mode: git_repo
     git_repo: https://github.com/anomalizer/ngx_aws_auth
-    paths:
-        - .
 nginx-backtrace:
     type: modules
     mode: git_repo
     git_repo: https://github.com/alibaba/nginx-backtrace
-    paths:
-        - .
 ngx_cache_purge:
     type: modules
     mode: git_repo
     git_repo: https://github.com/FRiCKLE/ngx_cache_purge
-    paths:
-        - .
 nginx_circle_gif:
     type: modules
     mode: git_repo
     git_repo: https://github.com/evanmiller/nginx_circle_gif
-    paths:
-        - .
 nginx-clojure:
     type: modules
     mode: git_repo
     git_repo: https://github.com/nginx-clojure/nginx-clojure
-    paths:
-        - .
 nginx_cookie_flag_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/AirisX/nginx_cookie_flag_module
-    paths:
-        - .
 nginx-http-concat:
     type: modules
     mode: git_repo
     git_repo: https://github.com/alibaba/nginx-http-concat
-    paths:
-        - .
 ngx_http_consistent_hash:
     type: modules
     mode: git_repo
     git_repo: https://github.com/replay/ngx_http_consistent_hash
-    paths:
-        - .
 ngx_upstream_jdomain:
     type: modules
     mode: git_repo
     git_repo: https://github.com/nicholaschiasson/ngx_upstream_jdomain
-    paths:
-        - .
 drizzle-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/drizzle-nginx-module
-    paths:
-        - .
 nginx-dynamic-etags:
     type: modules
     mode: git_repo
     git_repo: https://github.com/kali/nginx-dynamic-etags
-    paths:
-        - .
 ngx_http_dyups_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/yzprofile/ngx_http_dyups_module
-    paths:
-        - .
 ngx_dynamic_limit_req_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/limithit/ngx_dynamic_limit_req_module
-    paths:
-        - .
 ngx_cookie_limit_req_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/limithit/ngx_cookie_limit_req_module
-    paths:
-        - .
 echo-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/echo-nginx-module
-    paths:
-        - .
 stream-echo-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/stream-echo-nginx-module
-    paths:
-        - .
 nginx-elastic-client:
     type: modules
     mode: git_repo
     git_repo: https://github.com/Taymindis/nginx-elastic-client
-    paths:
-        - .
 encrypted-session-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/encrypted-session-nginx-module
-    paths:
-        - .
 ngx_http_enhanced_memcached_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/bpaquet/ngx_http_enhanced_memcached_module
-    paths:
-        - .
 nginx-eval-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/vkholodkov/nginx-eval-module
-    paths:
-        - .
 NginxExecute:
     type: modules
     mode: git_repo
     git_repo: https://github.com/limithit/NginxExecute
-    paths:
-        - .
 nginx-ey-balancer:
     type: modules
     mode: git_repo
     git_repo: https://github.com/ezmobius/nginx-ey-balancer
-    paths:
-        - .
 nginx-upstream-fair:
     type: modules
     mode: git_repo
     git_repo: https://github.com/gnosek/nginx-upstream-fair
-    paths:
-        - .
 ngx-fancyindex:
     type: modules
     mode: git_repo
     git_repo: https://github.com/aperezdc/ngx-fancyindex
-    paths:
-        - .
 nginx-http-footer-filter:
     type: modules
     mode: git_repo
     git_repo: https://github.com/alibaba/nginx-http-footer-filter
-    paths:
-        - .
 fcgi-function:
     type: modules
     mode: git_repo
     git_repo: https://github.com/Taymindis/fcgi-function
-    paths:
-        - .
 nginx_lua_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/alacner/nginx_lua_module
-    paths:
-        - .
 lua-upstream-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/lua-upstream-nginx-module
-    paths:
-        - .
 nginx_md5_filter:
     type: modules
     mode: git_repo
     git_repo: https://github.com/kainswor/nginx_md5_filter
-    paths:
-        - .
 nginx-c-function:
     type: modules
     mode: git_repo
     git_repo: https://github.com/Taymindis/nginx-c-function
-    paths:
-        - .
 nginx-ip-blocker:
     type: modules
     mode: git_repo
     git_repo: https://github.com/tmthrgd/nginx-ip-blocker
-    paths:
-        - .
 nginx-notice:
     type: modules
     mode: git_repo
     git_repo: https://github.com/kr/nginx-notice
-    paths:
-        - .
 nginx_ocsp_proxy-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/kyprizel/nginx_ocsp_proxy-module
-    paths:
-        - .
 nginx-openssl-version:
     type: modules
     mode: git_repo
     git_repo: https://github.com/PennockTech/nginx-openssl-version
-    paths:
-        - .
 ngx_pagespeed:
     type: modules
     mode: git_repo
     git_repo: https://github.com/pagespeed/ngx_pagespeed
-    paths:
-        - .
 socks-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/dannote/socks-nginx-module
-    paths:
-        - .
 nginx-http-slice:
     type: modules
     mode: git_repo
     git_repo: https://github.com/alibaba/nginx-http-slice
-    paths:
-        - .
 nginx-sorted-querystring-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/wandenberg/nginx-sorted-querystring-module
-    paths:
-        - .
 srcache-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/srcache-nginx-module
-    paths:
-        - .
 nginx-module-sts:
     type: modules
     mode: git_repo
     git_repo: https://github.com/vozlt/nginx-module-sts
-    paths:
-        - .
 nginx_tcp_proxy_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/yaoweibin/nginx_tcp_proxy_module
-    paths:
-        - .
 LuaJIT:
     type: depends
     mode: wget
