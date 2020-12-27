@@ -6,10 +6,6 @@ headers-more-nginx-module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/openresty/headers-more-nginx-module
-quiche:
-    type: modules
-    mode: git_repo
-    git_repo: https://github.com/cloudflare/quiche
 ngx_brotli:
     type: modules
     mode: git_repo
@@ -66,10 +62,6 @@ ngx_http_auth_pam_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/sto/ngx_http_auth_pam_module
-ngx_http_auth_request_module:
-    type: modules
-    mode: git_repo
-    git_repo: http://mdounin.ru/hg/ngx_http_auth_request_module/
 ngx_auto_lib:
     type: modules
     mode: git_repo
@@ -210,10 +202,6 @@ nginx-openssl-version:
     type: modules
     mode: git_repo
     git_repo: https://github.com/PennockTech/nginx-openssl-version
-ngx_pagespeed:
-    type: modules
-    mode: git_repo
-    git_repo: https://github.com/pagespeed/ngx_pagespeed
 socks-nginx-module:
     type: modules
     mode: git_repo
@@ -238,12 +226,15 @@ nginx_tcp_proxy_module:
     type: modules
     mode: git_repo
     git_repo: https://github.com/yaoweibin/nginx_tcp_proxy_module
-nginx:
-    type: depends
-    mode: wget
-    wget: http://nginx.org/download/nginx-1.19.6.tar.gz
-    filename: nginx-1.19.6.tar.gz
-    dest: ./
+boringssl:
+    type: modules
+    mode: git_repo
+    git_repo: https://github.com/google/boringssl
+nginx-quic:
+      type: depends
+      mode: hg_repo
+      hg_repo: http://hg.nginx.org/nginx-quic
+      revisions: quic
 LuaJIT:
     type: depends
     mode: wget

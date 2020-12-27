@@ -19,7 +19,7 @@ temp_dir = 'tmp'
 
 def read_conf(file):
     fs = open(file,'r',encoding='utf-8')
-    datas = yaml.load(fs,Loader=yaml.SafeLoader) 
+    datas = yaml.load(fs,Loader=yaml.SafeLoader)
     return datas
 
 def processing(module,conf):
@@ -40,26 +40,45 @@ def processing(module,conf):
         if 'git_repo' not in conf:
             print(f'E: Module {module} is missing the download git_repo field, skip')
             return
-        if 'paths' not in conf:
-            print(f'E: Module {module} is missing the download paths field, skip')
-            return
         repo = conf['git_repo']
-        paths = conf['paths']
         print(f'I: Module {module} performs cloning {pwd}/{temp_dir}/{type}/{module}')
         if os.system(f'git clone --recurse-submodules {repo} {pwd}/{temp_dir}/{type}/{module}'):
-            print(f'E: Module {module} Execution command error, termination')
-            sys.exit(1)
+            print(f'E: Module {module} Execution command error, skip')
         else:
             if type == 'modules':
                 full_src_path = f'{pwd}/{temp_dir}/{type}/{module}/*'
                 full_dest_path = f'{pwd}/{type}/{module}/'
                 print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
                 if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
-                    print(f'E: Module {module} Execution command error, termination')
-                    sys.exit(1)
+                    print(f'E: Module {module} Execution command error, skip')
+                    return
             else:
                 print(f'E: Modules {module} not support {type} type')
-                sys.exit(1)
+                return
+    elif mode == "hg_repo":
+        if 'hg_repo' not in conf:
+            print(f'E: Module {module} is missing the download hg_repo field, skip')
+            return
+        if 'revisions' not in conf:
+            print(f'E: Module {module} is missing the download revisions field, skip')
+            return
+        repo = conf['hg_repo']
+        revisions = conf['revisions']
+        print(f'I: Module {module} performs cloning {pwd}/{temp_dir}/{type}/{module},revisions to {revisions}')
+        if os.system(f'hg clone {repo} {pwd}/{temp_dir}/{type}/{module} && cd {pwd}/{temp_dir}/{type}/{module} && hg update {revisions} && cd {pwd}'):
+            print(f'E: Module {module} Execution command error, skip')
+            return
+        else:
+            if type == 'depends':
+                full_src_path = f'{pwd}/{temp_dir}/{type}/{module}/*'
+                full_dest_path = f'{pwd}/{type}/{module}/'
+                print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
+                if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
+                    print(f'E: Module {module} Execution command error, skip')
+                    return
+            else:
+                print(f'E: Modules {module} not support {type} type')
+                return
     elif mode == 'wget':
         if 'wget' not in conf:
             print(f'E: Module {module} is missing the download wget field, skip')
@@ -75,23 +94,23 @@ def processing(module,conf):
         desk_file = conf['dest']
         print(f'I: Module {module} performs download {pwd}/{temp_dir}/{type}/{filename}')
         if os.system(f'wget {download_url} -P {pwd}/{temp_dir}/{type}'):
-            print(f'E: Module {module} Execution command error, termination')
-            sys.exit(1)
+            print(f'E: Module {module} Execution command error, skip')
+            return
         else:
             print(f'Module {module} Start unpacking Tar.gz')
             if os.system(f'mkdir -p {pwd}/{temp_dir}/{type}/{module} && tar xvf {pwd}/{temp_dir}/{type}/{filename} -C {pwd}/{temp_dir}/{type}/{module}'):
-                print(f'E: Module {module} Execution command error, termination')
-                sys.exit(1)
+                print(f'E: Module {module} Execution command error, skip')
+                return
             if type == 'depends':
                 full_src_path = f'{pwd}/{temp_dir}/{type}/{module}'
                 full_dest_path = f'{pwd}/{desk_file}/{type}/{module}'
                 print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
                 if os.system(f'mkdir -p {full_dest_path} && cp -r {full_src_path} {full_dest_path}'):
-                        print(f'E: Module {module} Execution command error, termination')
-                        sys.exit(1)
+                    print(f'E: Module {module} Execution command error, skip')
+                    return
             else:
                 print(f'E: Modules {module} not support {type} type')
-                sys.exit(1)
+                return
 if __name__ == '__main__':
     print('I: Check the temporary folder')
     if not os.path.exists(f'{pwd}/{temp_dir}'):
@@ -108,7 +127,7 @@ if __name__ == '__main__':
             print('I: Temporary depend folder does not exist, create now')
             os.mkdir(f'{pwd}/{temp_dir}/depend')
             print('I: Temporary depend folder does not exist, creation' + f' {pwd}/{temp_dir}/depend' + ' is complete')
-        
+
     yaml_data = read_conf(f'{pwd}/{yaml_file}')
     if yaml_data:
         for module,conf in yaml_data.items():
