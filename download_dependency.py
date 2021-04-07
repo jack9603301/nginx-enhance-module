@@ -69,7 +69,7 @@ def processing(module,conf):
             print(f'E: Module {module} Execution command error, skip')
             return
         else:
-            if type == 'depends':
+            if type == 'depends' and type == 'depends':
                 full_src_path = f'{pwd}/{temp_dir}/{type}/{module}/*'
                 full_dest_path = f'{pwd}/{type}/{module}/'
                 print(f'I: Module {module} copy {full_src_path} to {full_dest_path} ')
